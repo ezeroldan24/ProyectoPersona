@@ -1,0 +1,14 @@
+<nav th:fragment="nav-bar-dark" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">Personas</a>
+        <a class="navbar-brand" sec:authorize="!isAuthenticated()" th:href="@{/login}">Log in</a><!-- CUANDO NO ESTE LOGEADO SE VA A MOSTRAR EL LOGIN -->
+        <a class="navbar-brand" sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a><!-- CUANDO ESTA LOGEADO SE VA A MOSTRAR EL LOGOUT -->
+        <a class="navbar-brand" sec:authorize="!isAuthenticated()" th:href="@{/registro}">Registrarse</a><!-- CUANDO NO ESTA REGISTRADO VA A APARECER -->
+    </div>
+</nav>
+
+<nav th:fragment="nav-bar-light" class="navbar navbar-expand-lg nav-bar-light bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">Personas</a>
+    </div>
+</nav>

@@ -1,0 +1,10 @@
+
+body{
+    background-image: url(https://www.mediasource.mx/hubfs/blog-files/fondos-web.jpg);
+    background-size: cover; 
+    background-repeat: no-repeat;
+}
+a{
+    color:aliceblue;
+    text-decoration: none;
+}

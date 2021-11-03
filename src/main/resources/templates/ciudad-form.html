@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es-AR" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/head :: head"> <!--En fragments head, se encuentra todo el codigo de boostrap y css y se pasa aca con replace -->
+    <title>Crearpersona</title>
+</head>
+
+
+<body>
+    <nav th:replace="/fragments/nav-bar :: nav-bar-dark">
+        </nav>
+   <!-- <button class="text-light bg-dark"><a th:href="@{/persona/list}">Ver lista de personas</a></button>-->
+    <!--LA @ HACE REFERENCIA A LAS URL -->
+    <br>
+    
+    <div class="container">
+        <div class="card">
+            <div class="card-header d-flex">
+                <h1 class="card mt-2"> Crear Ciudad</h1>
+                <button class="btn-dark px-5 py-2 ms-auto "><a th:href="@{/ciudad/list}">Lista de personas</a></button>
+            </div>
+            <div class="card-body">
+              <form th:action="@{/ciudad/save}" method="POST" th:object="${ciudad}" class="col-8 mx-auto"> <!--th:objet carga el objeto persona y permite trabajar con th:field-->
+               <input hidden th:field="*{id}">  <!--PARA QUE LO TOME POR ID -->
+                
+                  <div class="mb-3">
+                    <label for="ciudad" class="form-label">Ciudad</label>
+                    <input type="text" class="form-control" th:field="*{nombre}" placeholder="Ingrese su ciudad">  <!--PLACEHOLDER SE VE CUANDO CLIKEAS SE BORRA -->
+                  </div>
+                    <!-- ACTION, LUGAR DONDE VA A VIAJAR EL HTML, POST PORQUE SE GUARDA ALGO -->
+                    <button  type="submit" class="btn-dark px-5 py-2 ms-auto ">Guardar</button>
+                </form>
+            </div>
+        </div>
+        <button class="text-light bg-dark"><a th:href="@{/}">Volver a inicio</a></button>
+</body>
+
+</html>

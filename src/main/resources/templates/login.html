@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es-AR" xmlns:th="http://www.thymeleaf.org" xmls:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="/fragments/head :: head"> <!--En fragments head, se encuentra todo el codigo de boostrap y css y se pasa aca con replace -->
+    <title>Crearpersona</title>
+</head>
+
+
+<body>
+    <nav th:replace="/fragments/nav-bar :: nav-bar-dark">
+        </nav>
+   <!-- <button class="text-light bg-dark"><a th:href="@{/persona/list}">Ver lista de personas</a></button>-->
+    <!--LA @ HACE REFERENCIA A LAS URL -->
+    <br>
+    
+    <div class="container">
+    <div th:if="${error}" th:text="${error}" class="alert alert-danger"><!--El if verifica si hay un error, y el th text muestra el mensaje del error-->
+    <span th:text="${error}"></span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div th:if="${param.logout}" class="alert alert-info  mt-3" ><!-- param.logout , si es true se va a mostrar-->
+	<span> Has cerrado la sesion con exito</span>
+  
+    </div>
+        <div class="card">
+            <div class="card-header d-flex">
+                <h1 class="card mt-2"> Login</h1>
+                <button class="btn-dark px-5 py-2 ms-auto "><a th:href="@{/}">Volver</a></button>
+            </div>
+            <div class="card-body">
+              <form th:action="@{/logincheck}" method="POST"  class="col-8 mx-auto"> <!--th:objet carga el objeto persona y permite trabajar con th:field-->
+              <!--EN EL CONTROLADOR HAY UN POSTMAPPING QUE APUNTA A REGISTRO -->
+               <!--<input hidden th:field="*{id}">  PARA QUE LO TOME POR ID -->
+                
+                  <div class="mb-3">
+                    <label for="ciudad" class="form-label">Nombre de usuario</label>
+                    <input type="text" class="form-control" th:value="${username}"name="username" placeholder="Nombre de usuario">  <!--PLACEHOLDER SE VE CUANDO CLIKEAS SE BORRA -->
+                  </div>
+                   <div class="mb-3">
+                    <label for="ciudad" class="form-label">Ingrese su clave</label>
+                    <input type="password" class="form-control" name="password" >  <!--PLACEHOLDER SE VE CUANDO CLIKEAS SE BORRA -->
+                  </div>
+
+                
+                    <!-- ACTION, LUGAR DONDE VA A VIAJAR EL HTML, POST PORQUE SE GUARDA ALGO -->
+                    <button  type="submit" class="btn-dark px-5 py-2 ms-auto ">Ingresar</button>
+                </form>
+            </div>
+        </div>
+        <button class="text-light bg-dark"><a th:href="@{/}">Volver a inicio</a></button>
+</body>
+
+</html>
